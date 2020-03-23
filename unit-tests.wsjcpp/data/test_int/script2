@@ -1,0 +1,48 @@
+#!/usr/sbin/wsjcpp-safe-scripting
+
+# test numbers
+
+var1 = int arg0
+var1++
+
+fu some
+    return 1
+    
+
+// test multi string and trim
+
+/*
+    Multi line comments
+*/
+
+var2 = "
+  line1
+  line2 \"d;skfd;f\"
+  line3 " + arg0 + "
+"
+
+var2 = trim "   some"
+var3 = " some "
+var4 = trim var3
+var3 = trim var3
+
+if var3 == var4
+    print "nice" var3 var4
+else
+    return 1
+
+// list
+var5 = [] 
+var5 += "1"
+var5 += "2"
+
+str = "1,2,3,4,5"
+var5 = split str ","
+print var5
+
+foreach item in var5
+    print item
+
+var2 = normalizeFileName var2
+
+

@@ -1,0 +1,69 @@
+
+classname = "HttpHandler" + arg0
+dirpath = arg1
+filename = generateFilename classname
+api_handler_name = replaceAll classname "_" "-"
+header_filename = filename + ".h"
+source_filename = filename + ".cpp"
+
+header_define = toUpper header_filename
+
+header_content = "
+#ifndef " + header_define + "
+#define " + header_define + "
+
+#include <wsjcpp_light_web_server.h>
+
+class " + classname + "  : WSJCppLightWebHttpHandlerBase {
+    public:
+        " + classname + "();
+        virtual bool canHandle(const std::string &sWorkerId, WSJCppLightWebHttpRequest *pRequest);
+        virtual bool handle(const std::string &sWorkerId, WSJCppLightWebHttpRequest *pRequest);
+
+    private:
+        std::string TAG;
+};
+#endif // " + header_define + "
+"
+
+sourcefile = "
+#include <wsjcpp_core.h>
+#include \"" + header_filename + "\"
+
+// ----------------------------------------------------------------------
+
+" + classname + "::" + classname + "()
+: WSJCppLightWebHttpHandlerBase(\"" + api_handler_name + "\") {
+    TAG = \"" + classname + "\";
+}
+
+// ----------------------------------------------------------------------
+
+bool HttpHandlerSoloGenerate::canHandle(const std::string &sWorkerId, WSJCppLightWebHttpRequest *pRequest) {
+    std::string _tag = TAG + \"-\" + sWorkerId;
+    std::string sRequestPath = pRequest->getRequestPath();
+
+    if (sRequestPath == \"/api/v1/\"" + api_handler_name + "/\" || sRequestPath == \"/api/v1/\"" + api_handler_name + "\"\") {
+        return true;    
+    }
+    return false;
+}
+
+// ----------------------------------------------------------------------
+
+bool HttpHandlerSoloGenerate::handle(const std::string &sWorkerId, WSJCppLightWebHttpRequest *pRequest) {
+    std::string _tag = TAG + \"-\" + sWorkerId;
+    std::string sRequestPath = pRequest->getRequestPath();
+    
+    WSJCppLightWebHttpResponse resp(pRequest->getSockFd());
+    if (sRequestPath != \"/api/v1/" + api_handler_name + "/\" && sRequestPath != \"/api/v1/" + api_handler_name + "\") {
+        return false;
+    }
+   
+    resp.ok().noCache().sendJson(\"TODO\");
+
+    return true;
+}
+
+// ----------------------------------------------------------------------
+"

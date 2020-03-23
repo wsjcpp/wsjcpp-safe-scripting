@@ -1,0 +1,8 @@
+#!/bin/wsjcpp-safe-scripting
+
+var2 = readfile "./file.txt"
+
+var2 += "Some test"
+var3 = int(var3)
+var3++
+

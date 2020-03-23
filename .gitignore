@@ -1,3 +1,9 @@
+tmp/*
+wsjcpp-safe-scripting
+.logs/*
+.vscode/*
+.wsjcpp/*
+
 # Prerequisites
 *.d
 
