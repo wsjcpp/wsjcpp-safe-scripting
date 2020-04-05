@@ -4,7 +4,7 @@
 #include <wsjcpp_unit_tests.h>
 
 // Description: TODO
-class UnitTestProcedureConcat : public WSJCppUnitTestBase {
+class UnitTestProcedureConcat : public WsjcppUnitTestBase {
     public:
         UnitTestProcedureConcat();
         virtual void init();

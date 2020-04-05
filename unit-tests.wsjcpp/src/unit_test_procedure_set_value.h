@@ -4,7 +4,7 @@
 #include <wsjcpp_unit_tests.h>
 
 // Description: TODO
-class UnitTestProcedureSetValue : public WSJCppUnitTestBase {
+class UnitTestProcedureSetValue : public WsjcppUnitTestBase {
     public:
         UnitTestProcedureSetValue();
         virtual void init();

@@ -17,7 +17,8 @@ addons:
 # Build steps
 script:
   - ./build_simple.sh
-  - ./wsjcpp-safe-scripting scripts.wsjcpp/generate.WSJCppSafeScriptingProc TestProc
+  - ./wsjcpp-safe-scripting scripts.wsjcpp/generate.WsjcppSafeScriptingProc TestProc
+  - ./build_simple.sh
   - cd unit-tests.wsjcpp
   - ./build_simple.sh
   - ./unit-tests

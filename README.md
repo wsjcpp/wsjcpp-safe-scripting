@@ -1,6 +1,6 @@
 # wsjcpp-safe-scripting
 
-[![Build Status](https://api.travis-ci.org/wsjcpp/wsjcpp-safe-scripting.svg?branch=master)](https://travis-ci.org/wsjcpp/wsjcpp-safe-scripting) [![Github Stars](https://img.shields.io/github/stars/wsjcpp/wsjcpp-safe-scripting.svg?label=github%20%E2%98%85)](https://github.com/wsjcpp/wsjcpp-safe-scripting/stargazers) [![Github Stars](https://img.shields.io/github/contributors/wsjcpp/wsjcpp-safe-scripting.svg)](https://github.com/wsjcpp/wsjcpp-safe-scripting/) [![Github Forks](https://img.shields.io/github/forks/wsjcpp/wsjcpp-safe-scripting.svg?label=github%20forks)](https://github.com/wsjcpp/wsjcpp-safe-scripting/network/members)
+[![Build Status](https://api.travis-ci.com/wsjcpp/wsjcpp-safe-scripting.svg?branch=master)](https://travis-ci.com/wsjcpp/wsjcpp-safe-scripting) [![Github Stars](https://img.shields.io/github/stars/wsjcpp/wsjcpp-safe-scripting.svg?label=github%20%E2%98%85)](https://github.com/wsjcpp/wsjcpp-safe-scripting/stargazers) [![Github Stars](https://img.shields.io/github/contributors/wsjcpp/wsjcpp-safe-scripting.svg)](https://github.com/wsjcpp/wsjcpp-safe-scripting/) [![Github Forks](https://img.shields.io/github/forks/wsjcpp/wsjcpp-safe-scripting.svg?label=github%20forks)](https://github.com/wsjcpp/wsjcpp-safe-scripting/network/members)
 
 * Light script language for integration to your project
 * Script deny access read/write to out folders/files 
@@ -57,9 +57,9 @@ Default procedures:
 
 ...
 
-WSJCppSafeScriptingContext scriptContext;
+WsjcppSafeScriptingContext scriptContext;
 
-std::string sCurrentDirectory = WSJCppCore::getCurrentDirectory();
+std::string sCurrentDirectory = WsjcppCore::getCurrentDirectory();
 std::string sScriptFileName = "script_filename";
 std::vector<std::string> vScriptArgs = {"Some1", "Some2"}; // script args: arg1, arg2
 
@@ -88,7 +88,7 @@ if (nResult == 0) {
 ### New procedures via wsjcpp
 
 ```
-wsjcpp generate WSJCppSafeScriptingProc YourClassName
+wsjcpp generate WsjcppSafeScriptingProc YourClassName
 ```
 
 After this will be generated files and added to your CMakeLists.txt:
@@ -110,10 +110,10 @@ header `src/wsjcpp_safe_scripting_proc_your_class_name.h`:
 
 #include <wsjcpp_safe_scripting.h>
 
-class WSJCppSafeScriptingProcYourClassName : public WSJCppSafeScriptingProc {
+class WsjcppSafeScriptingProcYourClassName : public WsjcppSafeScriptingProc {
     public:
-        WSJCppSafeScriptingProcYourClassName();
-        virtual bool exec(const std::vector<WSJCppSafeScriptingVariable *> &m_vArgs);
+        WsjcppSafeScriptingProcYourClassName();
+        virtual bool exec(const std::vector<WsjcppSafeScriptingVariable *> &m_vArgs);
 };
 
 
@@ -126,18 +126,18 @@ source-code `src/wsjcpp_safe_scripting_proc_your_class_name.cpp`:
 #include <wsjcpp_core.h>
 
 // ---------------------------------------------------------------------
-// WSJCppSafeScriptingProcYourClassName
+// WsjcppSafeScriptingProcYourClassName
 
-WSJCppSafeScriptingProcYourClassName::WSJCppSafeScriptingProcYourClassName() 
-: WSJCppSafeScriptingProc("your_class_name") {
+WsjcppSafeScriptingProcYourClassName::WsjcppSafeScriptingProcYourClassName() 
+: WsjcppSafeScriptingProc("your_class_name") {
 
 }
 
 // ---------------------------------------------------------------------
 
-bool WSJCppSafeScriptingProcYourClassName::exec(const std::vector<WSJCppSafeScriptingVariable *> &vArgs) {
+bool WsjcppSafeScriptingProcYourClassName::exec(const std::vector<WsjcppSafeScriptingVariable *> &vArgs) {
     // you code here
-    WSJCppLog::err(TAG, "Not implemented")
+    WsjcppLog::err(TAG, "Not implemented")
     return false;
 }
 ```
@@ -146,13 +146,13 @@ bool WSJCppSafeScriptingProcYourClassName::exec(const std::vector<WSJCppSafeScri
 
 Example:
 ```
-WSJCppSafeScriptingContext scriptContext;
+WsjcppSafeScriptingContext scriptContext;
 
 // variable
-WSJCppSafeScriptingVariable *pVar = new WSJCppSafeScriptingVariable("");
+WsjcppSafeScriptingVariable *pVar = new WsjcppSafeScriptingVariable("");
 scriptContext.addVar(pVar);
 
-WSJCppSafeScriptingProcYourClassName *pProc = new WSJCppSafeScriptingProcYourClassName();
+WsjcppSafeScriptingProcYourClassName *pProc = new WsjcppSafeScriptingProcYourClassName();
 scriptContext.addProc(pProc);
 
 ```

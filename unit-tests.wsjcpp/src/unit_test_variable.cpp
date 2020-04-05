@@ -6,7 +6,7 @@
 REGISTRY_UNIT_TEST(UnitTestVariable)
 
 UnitTestVariable::UnitTestVariable()
-    : WSJCppUnitTestBase("UnitTestVariable") {
+    : WsjcppUnitTestBase("UnitTestVariable") {
 }
 
 // ---------------------------------------------------------------------
@@ -20,7 +20,7 @@ void UnitTestVariable::init() {
 bool UnitTestVariable::run() {
     bool bTestSuccess = true;
     std::string sValue = "Test 1";
-    WSJCppSafeScriptingVariable *pValue = new WSJCppSafeScriptingVariable(sValue);
+    WsjcppSafeScriptingVariable *pValue = new WsjcppSafeScriptingVariable(sValue);
     compareS(bTestSuccess, "Value 1", pValue->getValue(), sValue);
     sValue = "some 2";
     pValue->setValue(sValue);

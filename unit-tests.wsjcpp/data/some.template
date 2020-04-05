@@ -14,11 +14,11 @@ header_content = "
 
 #include <wsjcpp_light_web_server.h>
 
-class " + classname + "  : WSJCppLightWebHttpHandlerBase {
+class " + classname + "  : WsjcppLightWebHttpHandlerBase {
     public:
         " + classname + "();
-        virtual bool canHandle(const std::string &sWorkerId, WSJCppLightWebHttpRequest *pRequest);
-        virtual bool handle(const std::string &sWorkerId, WSJCppLightWebHttpRequest *pRequest);
+        virtual bool canHandle(const std::string &sWorkerId, WsjcppLightWebHttpRequest *pRequest);
+        virtual bool handle(const std::string &sWorkerId, WsjcppLightWebHttpRequest *pRequest);
 
     private:
         std::string TAG;
@@ -33,13 +33,13 @@ sourcefile = "
 // ----------------------------------------------------------------------
 
 " + classname + "::" + classname + "()
-: WSJCppLightWebHttpHandlerBase(\"" + api_handler_name + "\") {
+: WsjcppLightWebHttpHandlerBase(\"" + api_handler_name + "\") {
     TAG = \"" + classname + "\";
 }
 
 // ----------------------------------------------------------------------
 
-bool HttpHandlerSoloGenerate::canHandle(const std::string &sWorkerId, WSJCppLightWebHttpRequest *pRequest) {
+bool HttpHandlerSoloGenerate::canHandle(const std::string &sWorkerId, WsjcppLightWebHttpRequest *pRequest) {
     std::string _tag = TAG + \"-\" + sWorkerId;
     std::string sRequestPath = pRequest->getRequestPath();
 
@@ -51,11 +51,11 @@ bool HttpHandlerSoloGenerate::canHandle(const std::string &sWorkerId, WSJCppLigh
 
 // ----------------------------------------------------------------------
 
-bool HttpHandlerSoloGenerate::handle(const std::string &sWorkerId, WSJCppLightWebHttpRequest *pRequest) {
+bool HttpHandlerSoloGenerate::handle(const std::string &sWorkerId, WsjcppLightWebHttpRequest *pRequest) {
     std::string _tag = TAG + \"-\" + sWorkerId;
     std::string sRequestPath = pRequest->getRequestPath();
     
-    WSJCppLightWebHttpResponse resp(pRequest->getSockFd());
+    WsjcppLightWebHttpResponse resp(pRequest->getSockFd());
     if (sRequestPath != \"/api/v1/" + api_handler_name + "/\" && sRequestPath != \"/api/v1/" + api_handler_name + "\") {
         return false;
     }

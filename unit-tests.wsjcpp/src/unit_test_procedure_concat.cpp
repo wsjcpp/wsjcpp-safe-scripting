@@ -6,7 +6,7 @@
 REGISTRY_UNIT_TEST(UnitTestProcedureConcat)
 
 UnitTestProcedureConcat::UnitTestProcedureConcat()
-    : WSJCppUnitTestBase("UnitTestProcedureConcat") {
+    : WsjcppUnitTestBase("UnitTestProcedureConcat") {
 }
 
 // ---------------------------------------------------------------------
@@ -20,12 +20,12 @@ void UnitTestProcedureConcat::init() {
 bool UnitTestProcedureConcat::run() {
     bool bTestSuccess = true;
 
-    WSJCppSafeScriptingProcedureConcat *pProcedureConcat = new WSJCppSafeScriptingProcedureConcat();
-    std::vector<WSJCppSafeScriptingVariable *> vArgs;
-    WSJCppSafeScriptingVariable *pVar1 = new WSJCppSafeScriptingVariable("123");
-    WSJCppSafeScriptingVariable *pVar2 = new WSJCppSafeScriptingVariable("456");
-    WSJCppSafeScriptingVariable *pVar3 = new WSJCppSafeScriptingVariable("789");
-    WSJCppSafeScriptingVariable *pVar4 = new WSJCppSafeScriptingVariable("0");
+    WsjcppSafeScriptingProcedureConcat *pProcedureConcat = new WsjcppSafeScriptingProcedureConcat();
+    std::vector<WsjcppSafeScriptingVariable *> vArgs;
+    WsjcppSafeScriptingVariable *pVar1 = new WsjcppSafeScriptingVariable("123");
+    WsjcppSafeScriptingVariable *pVar2 = new WsjcppSafeScriptingVariable("456");
+    WsjcppSafeScriptingVariable *pVar3 = new WsjcppSafeScriptingVariable("789");
+    WsjcppSafeScriptingVariable *pVar4 = new WsjcppSafeScriptingVariable("0");
     vArgs.push_back(pVar1);
     vArgs.push_back(pVar2);
     vArgs.push_back(pVar3);

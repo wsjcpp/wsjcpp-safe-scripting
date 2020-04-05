@@ -6,7 +6,7 @@
 REGISTRY_UNIT_TEST(UnitTestProcedureSetValue)
 
 UnitTestProcedureSetValue::UnitTestProcedureSetValue()
-    : WSJCppUnitTestBase("UnitTestProcedureSetValue") {
+    : WsjcppUnitTestBase("UnitTestProcedureSetValue") {
 }
 
 // ---------------------------------------------------------------------
@@ -20,14 +20,14 @@ void UnitTestProcedureSetValue::init() {
 bool UnitTestProcedureSetValue::run() {
     bool bTestSuccess = true;
     
-    WSJCppSafeScriptingVariable *pVar1 = new WSJCppSafeScriptingVariable("123");
-    WSJCppSafeScriptingVariable *pVar2 = new WSJCppSafeScriptingVariable("456");
+    WsjcppSafeScriptingVariable *pVar1 = new WsjcppSafeScriptingVariable("123");
+    WsjcppSafeScriptingVariable *pVar2 = new WsjcppSafeScriptingVariable("456");
 
     compareS(bTestSuccess, "Var1", pVar1->getValue(), "123");
     compareS(bTestSuccess, "Var2", pVar2->getValue(), "456");
 
-    WSJCppSafeScriptingProcedureSetValue *pProcedureSetValue = new WSJCppSafeScriptingProcedureSetValue();
-    std::vector<WSJCppSafeScriptingVariable *> vArgs;
+    WsjcppSafeScriptingProcedureSetValue *pProcedureSetValue = new WsjcppSafeScriptingProcedureSetValue();
+    std::vector<WsjcppSafeScriptingVariable *> vArgs;
     vArgs.push_back(pVar1);
     vArgs.push_back(pVar2);
 
@@ -38,7 +38,7 @@ bool UnitTestProcedureSetValue::run() {
     compareS(bTestSuccess, "Var1", pVar1->getValue(), "456");
     compareS(bTestSuccess, "Var2", pVar2->getValue(), "456");
 
-    WSJCppSafeScriptingContext scriptContext;
+    WsjcppSafeScriptingContext scriptContext;
     scriptContext.addVariable("var14")->setValue("");
     scriptContext.exec(
          // folder

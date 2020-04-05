@@ -6,14 +6,14 @@
 // SafeScriptingProcTestProc
 
 SafeScriptingProcTestProc::SafeScriptingProcTestProc() 
-: WSJCppSafeScriptingProc("test_proc") {
+: WsjcppSafeScriptingProc("test_proc") {
 
 }
 
 // ---------------------------------------------------------------------
 
-bool SafeScriptingProcTestProc::exec(const std::vector<WSJCppSafeScriptingVariable *> &vArgs) {
-    WSJCppLog::err(TAG, "Not implemented");
+bool SafeScriptingProcTestProc::exec(const std::vector<WsjcppSafeScriptingVariable *> &vArgs) {
+    WsjcppLog::err(TAG, "Not implemented");
     return false;
 }
 
