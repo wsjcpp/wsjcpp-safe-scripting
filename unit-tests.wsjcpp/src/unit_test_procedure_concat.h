@@ -3,12 +3,12 @@
 
 #include <wsjcpp_unit_tests.h>
 
-// Description: TODO
 class UnitTestProcedureConcat : public WsjcppUnitTestBase {
     public:
         UnitTestProcedureConcat();
-        virtual void init();
-        virtual bool run();
+        virtual bool doBeforeTest() override;
+        virtual void executeTest() override;
+        virtual bool doAfterTest() override;
 };
 
 #endif // UNIT_TEST_PROCEDURE_CONCAT_H
