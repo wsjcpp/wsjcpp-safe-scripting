@@ -3,7 +3,7 @@
 #include <wsjcpp_core.h>
 #include <wsjcpp_safe_scripting.h>
 
-REGISTRY_UNIT_TEST(UnitTestProcedureConcat)
+REGISTRY_WSJCPP_UNIT_TEST(UnitTestProcedureConcat)
 
 UnitTestProcedureConcat::UnitTestProcedureConcat()
     : WsjcppUnitTestBase("UnitTestProcedureConcat") {
@@ -11,14 +11,14 @@ UnitTestProcedureConcat::UnitTestProcedureConcat()
 
 // ---------------------------------------------------------------------
 
-void UnitTestProcedureConcat::init() {
+bool UnitTestProcedureConcat::doBeforeTest() {
     // nothing
+    return true;
 }
 
 // ---------------------------------------------------------------------
 
-bool UnitTestProcedureConcat::run() {
-    bool bTestSuccess = true;
+void UnitTestProcedureConcat::executeTest() {
 
     WsjcppSafeScriptingProcedureConcat *pProcedureConcat = new WsjcppSafeScriptingProcedureConcat();
     std::vector<WsjcppSafeScriptingVariable *> vArgs;
@@ -31,15 +31,19 @@ bool UnitTestProcedureConcat::run() {
     vArgs.push_back(pVar3);
     vArgs.push_back(pVar4);
 
-    compareS(bTestSuccess, "Check name", pProcedureConcat->getName(), "concat");
+    compare("Check name", pProcedureConcat->getName(), "concat");
 
     pProcedureConcat->exec(vArgs);
     
-    compareS(bTestSuccess, "Var1", pVar1->getValue(), "1234567890");
-    compareS(bTestSuccess, "Var2", pVar2->getValue(), "456");
-    compareS(bTestSuccess, "Var3", pVar3->getValue(), "789");
-    compareS(bTestSuccess, "Var4", pVar4->getValue(), "0");
-
-    return bTestSuccess;
+    compare("Var1", pVar1->getValue(), "1234567890");
+    compare("Var2", pVar2->getValue(), "456");
+    compare("Var3", pVar3->getValue(), "789");
+    compare("Var4", pVar4->getValue(), "0");
 }
 
+// ---------------------------------------------------------------------
+
+bool UnitTestProcedureConcat::doAfterTest() {
+    // nothing
+    return true;
+}
