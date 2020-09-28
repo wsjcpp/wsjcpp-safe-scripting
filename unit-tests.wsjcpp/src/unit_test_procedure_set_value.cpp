@@ -70,6 +70,9 @@ void UnitTestProcedureSetValue::executeTest() {
             "a\nbc"
         );
     }
+    delete pProcedureSetValue;
+    delete pVar1;
+    delete pVar2;
 }
 
 // ---------------------------------------------------------------------
