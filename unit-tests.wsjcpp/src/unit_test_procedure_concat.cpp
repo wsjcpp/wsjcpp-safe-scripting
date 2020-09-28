@@ -39,6 +39,12 @@ void UnitTestProcedureConcat::executeTest() {
     compare("Var2", pVar2->getValue(), "456");
     compare("Var3", pVar3->getValue(), "789");
     compare("Var4", pVar4->getValue(), "0");
+    
+    delete pProcedureConcat;
+    delete pVar1;
+    delete pVar2;
+    delete pVar3;
+    delete pVar4;
 }
 
 // ---------------------------------------------------------------------
